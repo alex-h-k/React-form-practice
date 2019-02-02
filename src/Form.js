@@ -1,6 +1,5 @@
 import React from 'react'
 import FormChild from './FormChild'
-import { HashRouter as Router, Route } from 'react-router-dom'
 
 class Form extends React.Component {
     constructor(){
@@ -27,17 +26,18 @@ class Form extends React.Component {
     }
        render() {
            return (
-               <Router>
+               
             <div>
                 <form >
-                <label>Name: <input  onChange = {this.handleChange} name = 'name'/></label>
-                <label>Location: <input onChange = {this.handleChange} name = 'location'/></label>
-                <button onClick={this.handleSubmit} value = 'Submit'>Submit</button>
+                    <label>Name: <input  onChange = {this.handleChange} name = 'name'/></label>  
+                    <label>Location: <input onChange = {this.handleChange} name = 'location'/></label>
+                    <button onClick={this.handleSubmit} value = 'Submit'>Submit</button>
                 </form>
-                {this.state.submitted && <Route path = '/home' 
-                render = {(props) => <FormChild {...props} name = {this.state.name} location = {this.state.location} /> }/>}
-            </div>
-            </Router>
+                {this.state.submitted && <FormChild name = {this.state.name} location = {this.state.location} /> }
+              </div>  
+                
+            
+           
            )
 
        }
