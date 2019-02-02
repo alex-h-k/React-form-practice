@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Child from './Child'
 import Form from './Form'
+import { HashRouter as Router, Route } from 'react-router-dom'
 
 
 class App extends Component {
@@ -21,12 +22,18 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
+      
       <div className="App">
+      <div className="Count">
        <button onClick = {this.increment}>Increase Count</button>
-       <Child count = {this.state.count}/>
-       <Form />
+       <Route path = '/count' render={({props}) => <Child {...props} count = {this.state.count} />} />
+      </div>
+       <Route path = '/register' component={Form} />
        
       </div>
+      </Router>
+     
     );
   }
 }
